@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <link rel="stylesheet" type="text/css" href="css/milligram.css">	</link>	    
+	<title>Device Profile</title>
+</h:head>
+<h:body>
+    <h2 class="">OPENIoT</h2>
+	
+	<h1 class="H1_us_prof"> <a href="UserProfile.xhtml"> Home Page </a>  Device Profile <a> Notifications </a></h1>
+
+ 
+	<div class="profile_corner">
+	    <div class="text_profile">
+            <div class="search_div">
+                <input type="search" placeholder=" Search ..." />
+                <button class="logout_but">Log out</button>
+            </div>
+        </div>
+    </div>
+    <div class="">   
+        <button class="request_acc">Request Access</button>
+    </div>
+    <div class="device_div">      
+        <div class="device_name">
+            <img class="cloud_device_img" src="img/cloud-computing.svg"  alt="device_photo" />
+            <h3 > Device X2.x4</h3>
+            <p class="description_dev"> This is another device for do whathever...<p class="star_dev_avg"><img src="img/star-violet.svg" class=""/><h:outputText value="#{AVERAGE_RATE}" /> 3.5 </p></p>
+            
+            
+        </div>
+            
+    </div>
+    
+    <h:form>
+        <div class="div_rate">
+           <label class="rate_lab" for="rate1_10">Rate 1-10</label>
+            <input id="rate1_10" name="rate1_10" type="number" max="10" min="1" class="rate_inp"/>
+        </div>
+
+        <div class="div_comm_dev" id="text_dev">
+           <label for="text_dev">Comment</label>
+           <input type="text" /> 
+        </div>
+        <h:button class="butt_send_feed">Send feedback</h:button>
+    </h:form>
+    <div class="div_comm_dev">
+       <h2>Comments</h2>
+        <div class="div_comm_dev_ind">
+            <p class="comm_dev_usr_beg"> User PePe <h:outputText value="#{COMENTARIO}" /></p>
+            <p>BEG COMM CON BEG COMMBEG COMM CON BEGON BEG COMMBEG COMM CON BEG COMMBEG COMM CON BEG COMM<h:outputText value="#{COMENTARIO}" /><p class="star_dev_avg"><img src="img/star-violet.svg" class=""/><h:outputText value="#{AVERAGE_RATE}" /> 3.5</p></p>
+        </div>
+        <div class="div_comm_dev_ind">
+            <p class="comm_dev_usr_beg"> User PePe <h:outputText value="#{COMENTARIO}" /></p>
+            <p>BEG COMM CON BEG COMMBEG COMM CON<h:outputText value="#{COMENTARIO}" /><p class="star_dev_avg"><img src="img/star-violet.svg" class=""/><h:outputText value="#{AVERAGE_RATE}" /> 3.5</p></p>
+        </div>
+    </div>
+</h:body>
+</html>

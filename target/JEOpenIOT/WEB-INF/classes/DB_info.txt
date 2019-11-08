@@ -1,0 +1,3 @@
+Rol_name: g2019_g10
+DB_name : db2019_g10
+Password: yMDMJp 

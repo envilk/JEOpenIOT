@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<link rel="stylesheet" href="css/milligram.css" />
+	<title>User Profile</title>
+
+</h:head>
+<h:body onload="#{sessionController.redirectLoginUserProfile()}">
+	<h2 class="">OPENIoT</h2>
+
+	<h1 class="H1_us_prof">User Profile</h1>
+
+
+	<div class="profile_corner">
+		<div class="photo_profile">
+
+			<img class="prof_img" src="img/user.svg" alt="User Profile Photo" />
+
+		</div>
+		<div class="text_profile">
+			<div class="text_prof_names">
+
+				<h:form>
+					<h:commandLink
+						action="#{pagesController.fromUserProfileToUserSettings()}">
+						<img src="img/settings.svg" class="img_sett" alt="Settings" />
+					</h:commandLink>
+				</h:form>
+
+				<h2>
+					<h:outputText value="#{userController.getUserByUname(sessionController.username).fName} " />
+					<h:outputText value="#{userController.getUserByUname(sessionController.username).iName}" />
+				</h2>
+
+				<h2>
+					<h:outputText value="#{sessionController.username}" />
+				</h2>
+			</div>
+
+			<h:form>
+				<h:commandLink
+					action="#{pagesController.fromUserProfileToNotifications()}">
+					<img class="img_not" src="img/notification.svg" alt="Notification" />
+				</h:commandLink>
+			</h:form>
+
+			<div class="search_div">
+				<input type="search" placeholder=" Search ..." />
+			</div>
+
+		</div>
+	</div>
+
+	<h:form>
+		<h:commandLink action="#{sessionController.logout()}" value="Logout"></h:commandLink>
+	</h:form>
+
+	<div class="devices_Owned">
+
+		<h2>Devices Owned:</h2>
+
+		<ui:repeat value="#{iotdeviceController.getIotdevicesOfAUser()}"
+			var="iot">
+			<div class="device_div">
+				<div class="device_name">
+					<img class="cloud_device_img" src="img/cloud-computing.svg"
+						alt="device_photo" />
+					<h3>
+						<h:outputText value="#{iot.dName}" />
+					</h3>
+					<p class="description_dev">
+						<h:outputText value="#{iot.serviceDesc}" />
+					</p>
+				</div>
+			</div>
+		</ui:repeat>
+
+	</div>
+
+
+</h:body>
+</html>
