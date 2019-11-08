@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import entities.FeedBack;
 import entities.IoTDevice;
 import entities.Usr;
 
@@ -21,20 +22,20 @@ public class IoTDeviceDAO {
 	    private EntityManager em;
 		
 	    // Stores a new Iot device:
-	    public void storeDevice(IoTDeviceDAO iotdevice) throws NamingException {
+	    public void storeDevice(IoTDevice iotdevice) throws NamingException {
 	        em.persist(iotdevice);
 	    }
 	    
 	    // Removes an existent Iot device:
-	    public void removeDevice(IoTDeviceDAO iotdevice) {
+	    public void removeDevice(IoTDevice iotdevice) {
 	    	em.remove(iotdevice);
 	    }
 
 	    // Retrieves all the Iot devices:
 		@SuppressWarnings("unchecked")
-		public List<IoTDeviceDAO> getAllDevices() {
+		public List<IoTDevice> getAllDevices() {
 	        Query query = em.createQuery("SELECT I FROM IoTDevice I");
-	        List<IoTDeviceDAO> devices = new ArrayList<IoTDeviceDAO>();
+	        List<IoTDevice> devices = new ArrayList<IoTDevice>();
 	        devices = query.getResultList();
 	        return devices;
 	    }
@@ -73,10 +74,9 @@ public class IoTDeviceDAO {
 	    }
 
 	    // Get one specific registration of a device
-		public void createAccessForUser(Long id, Long uid) {
-			TypedQuery<Usr> query = em.createNamedQuery("INSERT INTO access_iotdev_user (iotdevice_fk, user_fk) "
-					+ "VALUES (':id', ':uid')", Usr.class);
-			query.setParameter("id", id).setParameter("uid", uid).getResultList();
+		public void createAccessForUser(int id, int uid) {
+			Query query = em.createNativeQuery("INSERT INTO access_iotdev_user (iotdevice_fk, user_fk) "
+					+ "VALUES ("+id+", "+uid+")");
 			query.executeUpdate();
 	    }
 		
@@ -88,5 +88,20 @@ public class IoTDeviceDAO {
 			List <IoTDevice> devices = new ArrayList<IoTDevice>(query.getResultList());
 			return devices;
 	    }
+	    
+	    public IoTDevice getLastIoTDeviceId() {
+			Query query = em.createNativeQuery("select * from IoTDevice where ID in (select max(ID) from IoTDevice)", IoTDevice.class);
+			return (IoTDevice) query.getSingleResult();
+		}
+	    
+	 // Get all devices with access allowed of a user
+        @SuppressWarnings("unchecked")
+        public List<IoTDevice> getAllDeviceByName(String name) {
+            
+            Query query = em.createQuery("SELECT * FROM IOTDEVICE as I WHERE I.DNAME = '"+ name +"'");
+            List<IoTDevice> devices = new ArrayList<IoTDevice>();
+            devices = query.getResultList();
+            return devices;
+        }
 	    
 }

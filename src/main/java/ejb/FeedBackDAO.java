@@ -19,11 +19,11 @@ public class FeedBackDAO {
     private EntityManager em;
 	
     // Stores a new Feed back:
-    public void storeFeedback(FeedBack fb, int id) throws NamingException{
-        //em.persist(fb);
-    	Query query = em.createNativeQuery("INSERT INTO IoTDevice VALUES ("+fb.getId()+", "
+    public void storeFeedback(FeedBack fb/*, int id*/) throws NamingException{
+    	em.persist(fb);
+    	/*Query query = em.createNativeQuery("INSERT INTO IoTDevice VALUES ("+fb.getId()+", "
     			+fb.getComment()+", "+fb.getRating()+", "+id+")");
-		query.executeUpdate();
+		query.executeUpdate();*/
     }
     
     // Removes an existent feedback:

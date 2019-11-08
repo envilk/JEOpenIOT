@@ -10,7 +10,7 @@
 	</link>
 	<title>Device Profile</title>
 </h:head>
-<h:body>
+<h:body onload="#{sessionController.redirectLoginUserProfile()}">
 	<h2 class="">OPENIoT</h2>
 
 	<h1 class="H1_us_prof">
@@ -25,9 +25,6 @@
 				</h:commandLink>
 			</h:form>
 		</div>
-	</div>
-	<div class="">
-		<button class="request_acc">Request Access</button>
 	</div>
 	<div class="device_div">
 		<div class="device_name">

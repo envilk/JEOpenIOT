@@ -6,38 +6,58 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-    <link rel="stylesheet" type="text/css" href="css/milligram.css">	</link>	    
+	<link rel="stylesheet" type="text/css" href="css/milligram.css">
+	</link>
 	<title>Search</title>
 </h:head>
 <h:body>
-    <h2 class="">OPENIoT</h2>
-	
-	<h1 class="H1_us_prof"> <a href="UserProfile.xhtml"> Home Page </a> </h1>    
-   
-    <button class="log_butt_2">Log out </button>
+	<h2 class="">OPENIoT</h2>
 
-    <div class="search_div_2">
-        <input type="search" placeholder=" Search ..." />
-    </div>
-    
-    <div class="device_div">
-            
-        <div class="device_name">
-            <img class="cloud_device_img" src="img/cloud-computing.svg"  alt="device_photo" />
-            <h3 > Device X2.x4</h3>
-            <p class="description_dev"> This is another device for do whathever...</p>
-        </div>
-            
-    </div>
-    <div class="device_div">
-            
-        <div class="device_name">
-            <img class="cloud_device_img" src="img/cloud-computing.svg"  alt="device_photo" />
-            <h3 > Device X2.x4</h3>
-            <p class="description_dev"> This is another device for do whathever...</p>
-        </div>
-            
-    </div>
-    
+	<h1 class="H1_us_prof">
+		<a href="UserProfile.xhtml"> Home Page </a>
+	</h1>
+
+	<button class="log_butt_2">Log out</button>
+
+
+	<div class="">
+		<h:form>
+			<div class="search_div_2">
+
+				<h:inputText onkeypress="#{iotdeviceController.deviceName}"
+					id="dev_name_sett"></h:inputText>
+				<h:commandButton value="Submit"
+					action="iotdeviceController.deviceName"></h:commandButton>
+			</div>
+		</h:form>
+
+		<ui:repeat value="#{iotdeviceController.getAllIotdevicesNotMine()}"
+			var="iot">
+			<h:form>
+				<div class="device_div">
+					<div class="device_name">
+						<img class="cloud_device_img" src="img/cloud-computing.svg"
+							alt="device_photo" />
+						<h3>
+							<h:outputText value="#{iot.dName}" />
+						</h3>
+						<p class="description_dev">
+							<h:outputText value="#{iot.serviceDesc}" />
+						</p>
+					</div>
+
+					<h:commandLink class="logout_but"
+						action="#{iotdeviceController.seeDevice(iot.id)}"
+						value="See device"></h:commandLink>
+
+					<h:commandButton class="request_acc" value="Request Access"
+						action="#{iotdeviceController.createAccessForUser(iot.id)}" />
+				</div>
+			</h:form>
+		</ui:repeat>
+
+
+	</div>
+
 </h:body>
 </html>

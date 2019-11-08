@@ -42,7 +42,7 @@ public class FeedBackController implements Serializable{
 	}
 	
 	public String createFeedBack(int iotdevice) throws NamingException {
-		this.feedBackDao.storeFeedback(createFB(), iotdevice);
+		this.feedBackDao.storeFeedback(createFB()/*, iotdevice*/);
 		//this.feedBackDao.storeFBdevice(id, iotdevice);
 		return "DeviceProfile";
 	}

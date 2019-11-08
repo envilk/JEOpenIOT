@@ -58,6 +58,11 @@
 		<h:commandLink class="logout_but"
 			action="#{sessionController.logout()}" value="Logout"></h:commandLink>
 	</h:form>
+	
+	<h:form>
+		<h:commandLink class="logout_but"
+			action="#{pagesController.fromUserProfileToDeviceSettings()}" value="Register device"></h:commandLink>
+	</h:form>
 
 	<div class="devices_Owned">
 
@@ -75,10 +80,6 @@
 					<p class="description_dev">
 						<h:outputText value="#{iot.serviceDesc}" />
 					</p>
-					<h:form>
-						<h:commandLink class="logout_but"
-							action="#{iotdeviceController.seeDevice(iot.id)}" value="See device"></h:commandLink>
-					</h:form>
 				</div>
 			</div>
 		</ui:repeat>

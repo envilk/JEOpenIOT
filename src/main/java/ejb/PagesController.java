@@ -11,8 +11,8 @@ public class PagesController {
 		return "UserSettings";
 	}
 	
-	public String fromUserProfileToNotifications() {
-		return "Notifications";
+	public String fromUserProfileToDeviceSettings() {
+		return "DeviceSettings";
 	}
 	
 	public String from_ToSearch() {
