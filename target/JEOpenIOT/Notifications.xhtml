@@ -6,71 +6,89 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-    <link rel="stylesheet" type="text/css" href="css/milligram.css">	</link>	    
+	<link rel="stylesheet" type="text/css" href="css/milligram.css">
+	</link>
 	<title>Notifications</title>
 </h:head>
 <h:body>
-    <h2 class="">OPENIoT</h2>
-	
-	<h1 class="H1_us_prof"> <a href="UserProfile.xhtml"> Home Page </a> Notifications</h1>
-   
+	<h2 class="">OPENIoT</h2>
+
+	<h1 class="H1_us_prof">
+		<a href="UserProfile.xhtml"> Home Page </a> Notifications
+	</h1>
+
 	<div class="profile_corner">
-	    <div class="photo_profile">
-	    
-	        <img class="prof_img" src="img/user.svg" alt="User Profile Photo" />
-	        
-	    </div>
-	    <div class="text_profile">
-	        <div class="text_prof_names">
-	           
-	            <h2>NickName <h:outputText value="#{sessionController.username}" /></h2>
-	        </div>
-	    </div>
-    </div>
-    <div class="search_div">
-        <input type="search" placeholder=" Search ..." />
-    </div>
-        
-    <button >Log out </button>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <h2>Notifications</h2>
-    
-    <div class="noti_body">
-        <div class="noti_body_ind">
-            
-        </div>
-    </div>
-            <div class="device_div">
-            
-                <div class="device_name">
-                    <div>
-                        <img class="cloud_device_img" src="img/notification.svg"  alt="device_photo" />
-                        <h3>  </h3>
-                        <p class="description_dev"> Access to <h:outputText value="#{IoTDevice.dName}" /> resquested by <h:outputText value="#{usr.username}" /></p>
-                    </div>
+		<div class="photo_profile">
+
+			<img class="prof_img" src="img/user.svg" alt="User Profile Photo" />
+
+		</div>
+		<div class="text_profile">
+			<div class="text_prof_names">
+
+				<h2>
+					NickName
+					<h:outputText value="#{sessionController.username}" />
+				</h2>
+			</div>
+		</div>
+	</div>
+	
+	<h:form class="search_div">
+		<h:commandLink action="#{pagesController.from_ToSearch()}">
+			<img class="img_not" src="img/search.svg" alt="Search" />
+		</h:commandLink>
+	</h:form>
+	<button>Log out</button>
+	<br />
+	<br />
+	<br />
+	<br />
+	<h2>Notifications</h2>
+
+	<div class="noti_body">
+		<div class="noti_body_ind"></div>
+	</div>
+	<div class="device_div">
+
+		<div class="device_name">
+			<div>
+				<img class="cloud_device_img" src="img/notification.svg"
+					alt="device_photo" />
+				<h3></h3>
+				<p class="description_dev">
+					Access to
+					<h:outputText value="#{IoTDevice.dName}" />
+					resquested by
+					<h:outputText value="#{usr.username}" />
+				</p>
+			</div>
 
 
-                <h:commandButton action="#{ALGO}" value="Accept">Aceppt</h:commandButton>
-                <h:commandButton action="#{ALGO}" value="Denny">Denny</h:commandButton>
-                </div>
+			<h:commandButton action="#{ALGO}" value="Accept">Aceppt</h:commandButton>
+			<h:commandButton action="#{ALGO}" value="Denny">Denny</h:commandButton>
+		</div>
 
-                <div class="device_name">
-                    <div>
-                        <img class="cloud_device_img" src="img/notification.svg"  alt="device_photo" />
-                        <h3>  </h3>
-                        <p class="description_dev"> Access to <h:outputText value="#{IoTDevice.dName}" /> resquested by <h:outputText value="#{usr.username}" /></p>
-                    </div>
+		<div class="device_name">
+			<div>
+				<img class="cloud_device_img" src="img/notification.svg"
+					alt="device_photo" />
+				<h3></h3>
+				<p class="description_dev">
+					Access to
+					<h:outputText value="#{IoTDevice.dName}" />
+					resquested by
+					<h:outputText value="#{usr.username}" />
+				</p>
+			</div>
 
-                <button>Accept</button>
-                <button>Denny </button>
-                ¡Elige cual poner!
-                <h:commandButton action="#{ALGO}" value="Accept">Aceppt</h:commandButton>
-                <h:commandButton action="#{ALGO}" value="Denny">Denny</h:commandButton>
-             </div>
-            
-        </div>
+			<button>Accept</button>
+			<button>Denny</button>
+			¡Elige cual poner!
+			<h:commandButton action="#{ALGO}" value="Accept">Aceppt</h:commandButton>
+			<h:commandButton action="#{ALGO}" value="Denny">Denny</h:commandButton>
+		</div>
+
+	</div>
 </h:body>
 </html>

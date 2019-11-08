@@ -6,55 +6,57 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-    <link rel="stylesheet" type="text/css" href="css/milligram.css">	</link>	    
+	<link rel="stylesheet" type="text/css" href="css/milligram.css">
+	</link>
 	<title>Device Settings</title>
 </h:head>
 <h:body>
-    <h2 class="">OPENIoT</h2>
-	
-	<h1 class="H1_us_prof"> <a href="UserProfile.xhtml"> Home Page </a> Device Settings</h1>
-   
-   <div class="search_div">
-        <input type="search" placeholder=" Search ..." />
-    </div>
-    <br/>
-    <br/>
-    <br/>
-    <button class="logout_but">Log out </button>
-    
-    <div class="us_prof_div_sp">
-		
+	<h2 class="">OPENIoT</h2>
+
+	<h1 class="H1_us_prof">
+		<a href="UserProfile.xhtml"> Home Page </a> Device Settings
+	</h1>
+
+	<h:form class="search_div">
+		<h:commandLink action="#{pagesController.from_ToSearch()}">
+			<img class="img_not" src="img/search.svg" alt="Search" />
+		</h:commandLink>
+	</h:form>
+	<br />
+	<br />
+	<br />
+	<h:form>
+		<h:commandLink class="logout_but" action="#{sessionController.logout()}" value="Logout"></h:commandLink>
+	</h:form>
+
+	<div class="us_prof_div_sp">
+
 		<h:form class="Data">
 			<div class="sett_div">
-		    	<h:outputLabel> Name </h:outputLabel>
-		    	<h:inputText id="name_sett" title="NAME DESPLEGABLE" required="true" 
-		    	requieredMessage="Error: A name is required"
-		    	maxlength="25"></h:inputText>
+				<h:outputLabel> Name </h:outputLabel>
+				<h:inputText id="name_sett" title="NAME DESPLEGABLE" required="true"
+					requieredMessage="Error: A name is required" maxlength="25"></h:inputText>
 			</div>
 			<div class="sett_div">
-		    	<h:outputLabel> URL for service </h:outputLabel>
-			    <h:inputText id="name_sett" title="Last Name" required="true" 
-			    requieredMessage="Error: A name is required"
-			    maxlength="25"></h:inputText>
-		    </div>
-		    <div class="sett_div">
-		    	<h:outputLabel> Description of service </h:outputLabel>
-			    <h:inputText id="name_sett" title="" required="true" 
-			    requieredMessage="Error: A name is required"
-			    maxlength="25"></h:inputText>
-		    </div>
+				<h:outputLabel> URL for service </h:outputLabel>
+				<h:inputText id="name_sett" title="Last Name" required="true"
+					requieredMessage="Error: A name is required" maxlength="25"></h:inputText>
+			</div>
+			<div class="sett_div">
+				<h:outputLabel> Description of service </h:outputLabel>
+				<h:inputText id="name_sett" title="" required="true"
+					requieredMessage="Error: A name is required" maxlength="25"></h:inputText>
+			</div>
 		</h:form>
-		
-	    <h:commandButton
-				action="#{ALGO}"
-				value="Save">
-	    </h:commandButton>
-	
-			<h:commandButton
-				onclick="window.location.href='/contextpath/UserProfile.xhtml'"
-				value="Cancel">
-			</h:commandButton>
+
+		<h:commandButton action="#{ALGO}" value="Save">
+		</h:commandButton>
+
+		<h:commandButton
+			onclick="window.location.href='/contextpath/UserProfile.xhtml'"
+			value="Cancel">
+		</h:commandButton>
 	</div>
-    
+
 </h:body>
 </html>

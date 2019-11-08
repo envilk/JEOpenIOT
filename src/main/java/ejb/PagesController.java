@@ -15,4 +15,8 @@ public class PagesController {
 		return "Notifications";
 	}
 	
+	public String from_ToSearch() {
+		return "Search";
+	}
+	
 }

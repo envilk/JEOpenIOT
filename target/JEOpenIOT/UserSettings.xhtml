@@ -16,59 +16,67 @@
 		<a href="UserProfile.xhtml"> Home Page </a> User Settings
 	</h1>
 
-	<div class="search_div">
-		<input type="search" placeholder=" Search ..." />
+	<h:form class="search_div">
+		<h:commandLink action="#{pagesController.from_ToSearch()}">
+			<img class="img_not" src="img/search.svg" alt="Search" />
+		</h:commandLink>
+	</h:form>
+	<br />
+	<br />
+	<br />
+
+	<div class="sett_div">
+		<h:form>
+			<h:commandLink class="logout_but"
+				action="#{sessionController.logout()}" value="Logout"></h:commandLink>
+		</h:form>
+		<h:form>
+			<h:commandButton value="Delete Account"
+				action="#{userController.removeUser}" />
+		</h:form>
 	</div>
-	<br />
-	<br />
-	<br />
-	<button class="logout_but">Log out</button>
 
 	<h:panelGroup rendered="#{not empty sessionController.username}">
 		<div class="us_prof_div_sp">
 			<h:form>
 				<div class="sett_div">
 					<h:outputLabel> Name: #{userController.getUserByUname(sessionController.username).fName}</h:outputLabel>
-					<h:inputText value="#{user.fName}" id="name_sett"
+					<h:inputText value="#{userController.fName}" id="name_sett"
 						title="NAME DESPLEGABLE" required="true"
 						requieredMessage="Error: A name is required" maxlength="25"></h:inputText>
 				</div>
 				<div class="sett_div">
 					<h:outputLabel> Last Name: #{userController.getUserByUname(sessionController.username).iName} </h:outputLabel>
-					<h:inputText value="#{user.iName}" id="last_name_sett"
+					<h:inputText value="#{userController.iName}" id="last_name_sett"
 						title="Last Name" required="true"
 						requieredMessage="Error: A name is required" maxlength="25"></h:inputText>
 				</div>
 				<div class="sett_div">
-					<h:outputLabel> User Name: #{userController.getUserByUname(sessionController.username).uName} </h:outputLabel>
-					<h:inputText value="#{user.uName}" id="user_name_sett" title=""
-						required="true" requieredMessage="Error: A name is required"
-						maxlength="25"></h:inputText>
-				</div>
-				<div class="sett_div">
-					<h:outputLabel> Address: #{userController.getUserByUname(sessionController.username).address} </h:outputLabel>
-					<h:inputText value="#{user.address}" id="adress_name_sett" title=""
-						required="true" requieredMessage="Error: A name is required"
-						maxlength="25"></h:inputText>
-				</div>
-				<div class="sett_div">
-					<h:outputLabel> Phone: #{userController.getUserByUname(sessionController.username).phoneNumber} </h:outputLabel>
-					<h:inputText value="#{user.phoneNumber}" id="phone_name_sett"
+					<h:outputLabel> User Name: #{userController.getUserByUname(sessionController.username).uName}</h:outputLabel>
+					<h:inputText value="#{userController.uName}" id="user_name_sett"
 						title="" required="true"
 						requieredMessage="Error: A name is required" maxlength="25"></h:inputText>
 				</div>
 				<div class="sett_div">
-					<h:outputLabel> Password: #{userController.getUserByUname(sessionController.username).uPassword} </h:outputLabel>
-					<h:inputText value="#{user.uPassword}" id="pass_name_sett" title=""
-						required="true" requieredMessage="Error: A name is required"
-						maxlength="25"></h:inputText>
+					<h:outputLabel> Address: #{userController.getUserByUname(sessionController.username).address} </h:outputLabel>
+					<h:inputText value="#{userController.address}"
+						id="adress_name_sett" title="" required="true"
+						requieredMessage="Error: A name is required" maxlength="25"></h:inputText>
 				</div>
-			</h:form>
-
-			<h:form>
+				<div class="sett_div">
+					<h:outputLabel> Phone: #{userController.getUserByUname(sessionController.username).phoneNumber} </h:outputLabel>
+					<h:inputText value="#{userController.phoneNumber}"
+						id="phone_name_sett" title="" required="true"
+						requieredMessage="Error: A name is required" maxlength="25"></h:inputText>
+				</div>
+				<div class="sett_div">
+					<h:outputLabel> Password: #{userController.getUserByUname(sessionController.username).uPassword} </h:outputLabel>
+					<h:inputText value="#{userController.uPassword}"
+						id="pass_name_sett" title="" required="true"
+						requieredMessage="Error: A name is required" maxlength="25"></h:inputText>
+				</div>
 				<h:commandButton value="submit" action="#{userController.save}" />
 			</h:form>
-
 			<a href="UserProfile.xhtml"> Cancel </a>
 
 		</div>
@@ -78,53 +86,48 @@
 			<h:form>
 				<div class="sett_div">
 					<h:outputLabel> Name </h:outputLabel>
-					<h:inputText id="name_sett" value="#{user.fName}"
+					<h:inputText id="name_sett" value="#{userController.fName}"
 						title="NAME DESPLEGABLE" required="true"
 						requieredMessage="Error: A name is required" maxlength="25"></h:inputText>
 				</div>
 				<div class="sett_div">
 					<h:outputLabel> Last Name </h:outputLabel>
-					<h:inputText id="last_name_sett" value="#{user.iName}"
+					<h:inputText id="last_name_sett" value="#{userController.iName}"
 						title="Last Name" required="true"
 						requieredMessage="Error: A name is required" maxlength="25"></h:inputText>
 				</div>
 				<div class="sett_div">
 					<h:outputLabel> User Name </h:outputLabel>
-					<h:inputText id="user_name_sett" value="#{user.uName}" title=""
-						required="true" requieredMessage="Error: A name is required"
-						maxlength="25"></h:inputText>
+					<h:inputText id="user_name_sett" value="#{userController.uName}"
+						title="" required="true"
+						requieredMessage="Error: A name is required" maxlength="25"></h:inputText>
 				</div>
 				<div class="sett_div">
 					<h:outputLabel> Address </h:outputLabel>
-					<h:inputText id="adress_name_sett" value="#{user.address}" title=""
-						required="true" requieredMessage="Error: A name is required"
-						maxlength="25"></h:inputText>
+					<h:inputText id="adress_name_sett"
+						value="#{userController.address}" title="" required="true"
+						requieredMessage="Error: A name is required" maxlength="25"></h:inputText>
 				</div>
 				<div class="sett_div">
 					<h:outputLabel> Phone </h:outputLabel>
-					<h:inputText id="phone_name_sett" value="#{user.phoneNumber}"
-						title="" required="true"
+					<h:inputText id="phone_name_sett"
+						value="#{userController.phoneNumber}" title="" required="true"
 						requieredMessage="Error: A name is required" maxlength="25"></h:inputText>
 				</div>
 				<div class="sett_div">
 					<h:outputLabel> Set password </h:outputLabel>
-					<h:inputText id="pass_name_sett" value="#{user.uPassword}" title=""
-						required="true" requieredMessage="Error: A name is required"
-						maxlength="25"></h:inputText>
+					<h:inputText id="pass_name_sett"
+						value="#{userController.uPassword}" title="" required="true"
+						requieredMessage="Error: A name is required" maxlength="25"></h:inputText>
 				</div>
 				<div class="sett_div">
 					<h:outputLabel> Repeat password </h:outputLabel>
-					<h:inputText id="repeat_pass_name_sett" value="#{passRepeat}"
-						title="" required="true"
+					<h:inputText id="repeat_pass_name_sett"
+						value="#{userController.passRepeat}" title="" required="true"
 						requieredMessage="Error: A name is required" maxlength="25"></h:inputText>
 				</div>
+				<h:commandButton value="submit" action="#{userController.register}" />
 			</h:form>
-
-			<h:form>
-				<h:commandButton value="submit"
-					action="#{userController.register}" />
-			</h:form>
-
 			<a href="Login.xhtml"> Cancel </a>
 
 		</div>

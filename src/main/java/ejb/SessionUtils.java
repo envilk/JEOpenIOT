@@ -44,4 +44,9 @@ public class SessionUtils {
 		else
 			return null;
 	}
+	
+	public static void destroySession() {
+		HttpSession session = getSession();
+		session.invalidate();
+	}
 }

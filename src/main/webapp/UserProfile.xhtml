@@ -33,8 +33,10 @@
 				</h:form>
 
 				<h2>
-					<h:outputText value="#{userController.getUserByUname(sessionController.username).fName} " />
-					<h:outputText value="#{userController.getUserByUname(sessionController.username).iName}" />
+					<h:outputText
+						value="#{userController.getUserByUname(sessionController.username).fName} " />
+					<h:outputText
+						value="#{userController.getUserByUname(sessionController.username).iName}" />
 				</h2>
 
 				<h2>
@@ -42,22 +44,17 @@
 				</h2>
 			</div>
 
-			<h:form>
-				<h:commandLink
-					action="#{pagesController.fromUserProfileToNotifications()}">
-					<img class="img_not" src="img/notification.svg" alt="Notification" />
+			<h:form class="search_div">
+				<h:commandLink action="#{pagesController.from_ToSearch()}">
+					<img class="img_not" src="img/search.svg" alt="Search" />
 				</h:commandLink>
 			</h:form>
-
-			<div class="search_div">
-				<input type="search" placeholder=" Search ..." />
-			</div>
 
 		</div>
 	</div>
 
 	<h:form>
-		<h:commandLink action="#{sessionController.logout()}" value="Logout"></h:commandLink>
+		<h:commandLink class="logout_but" action="#{sessionController.logout()}" value="Logout"></h:commandLink>
 	</h:form>
 
 	<div class="devices_Owned">
