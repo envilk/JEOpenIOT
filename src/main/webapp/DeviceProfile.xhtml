@@ -17,7 +17,6 @@
 		<a href="UserProfile.xhtml"> Home Page </a> Device Profile
 	</h1>
 
-
 	<div class="profile_corner">
 		<div class="text_profile">
 			<h:form class="search_div">
@@ -34,66 +33,45 @@
 		<div class="device_name">
 			<img class="cloud_device_img" src="img/cloud-computing.svg"
 				alt="device_photo" />
-			<h3>Device X2.x4</h3>
+			<h3>#{iotdeviceController.dName}</h3>
 			<p class="description_dev">
-				This is another device for do whathever...
+				#{iotdeviceController.serviceDesc}
 				<p class="star_dev_avg">
-					<img src="img/star-violet.svg" class="" />
-					<h:outputText value="#{AVERAGE_RATE}" />
-					3.5
+					<img src="img/star-violet.jpeg" class="starti" />
+					<h:outputText value="#{iotdeviceController.globalRating}" />
 				</p>
 			</p>
-
-
 		</div>
-
 	</div>
 
 	<h:form>
 		<div class="div_rate">
-			<label class="rate_lab" for="rate1_10">Rate 1-10</label> <input
-				id="rate1_10" name="rate1_10" type="number" max="10" min="1"
-				class="rate_inp" />
+			<label class="rate_lab" for="rate1_10">Rate 1-10</label>
+			<h:inputText value="#{feedBackController.rating}" id="rate1_10"
+				class="rate_inp" type="text" maxlength="400"></h:inputText>
 		</div>
-
 		<div class="div_comm_dev" id="text_dev">
-			<label for="text_dev">Comment</label> <input type="text" />
+			<label for="text_dev">Comment</label>
+			<h:inputText value="#{feedBackController.comment}" id="comment_in"
+				type="text" maxlength="400"></h:inputText>
 		</div>
-		<h:button class="butt_send_feed">Send feedback</h:button>
+		<h:commandButton lass="butt_send_feed" value="Send feedback"
+			action="#{feedBackController.createFeedBack(iotdeviceController.iotdevice)}" />
 	</h:form>
 	<div class="div_comm_dev">
 		<h2>Comments</h2>
-		<div class="div_comm_dev_ind">
-			<p class="comm_dev_usr_beg">
-				User PePe
-				<h:outputText value="#{COMENTARIO}" />
-			</p>
-			<p>
-				BEG COMM CON BEG COMMBEG COMM CON BEGON BEG COMMBEG COMM CON BEG
-				COMMBEG COMM CON BEG COMM
-				<h:outputText value="#{COMENTARIO}" />
-				<p class="star_dev_avg">
-					<img src="img/star-violet.svg" class="" />
-					<h:outputText value="#{AVERAGE_RATE}" />
-					3.5
+		<ui:repeat
+			value="#{feedBackController.getFeedBackOfADevice(iotdeviceController.iotdevice)}"
+			var="fb">
+			<div class="div_comm_dev_ind">
+				<p class="comm_dev_usr_beg">
+					<h:outputText value="#{fb.rating}" />
 				</p>
-			</p>
-		</div>
-		<div class="div_comm_dev_ind">
-			<p class="comm_dev_usr_beg">
-				User PePe
-				<h:outputText value="#{COMENTARIO}" />
-			</p>
-			<p>
-				BEG COMM CON BEG COMMBEG COMM CON
-				<h:outputText value="#{COMENTARIO}" />
-				<p class="star_dev_avg">
-					<img src="img/star-violet.svg" class="" />
-					<h:outputText value="#{AVERAGE_RATE}" />
-					3.5
+				<p>
+					<h:outputText value="#{fb.comment}" />
 				</p>
-			</p>
-		</div>
+			</div>
+		</ui:repeat>
 	</div>
 </h:body>
 </html>

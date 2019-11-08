@@ -40,8 +40,8 @@ public class IoTDeviceDAO {
 	    }
 	    
 	    // Get device by ID
-	    public IoTDeviceDAO getDevice(Long id) {
-	    	IoTDeviceDAO device = em.find(IoTDeviceDAO.class, id);
+	    public IoTDevice getDevice(int id) {
+	    	IoTDevice device = em.find(IoTDevice.class, id);
 	    	return device;
 	    }
 	    
@@ -79,6 +79,14 @@ public class IoTDeviceDAO {
 			query.setParameter("id", id).setParameter("uid", uid).getResultList();
 			query.executeUpdate();
 	    }
-
+		
+		// Get all devices with access allowed of a user
+	    @SuppressWarnings("unchecked")
+	    public List<IoTDevice> getAllDeviceAccessAllowedOfAUser(int uid) {
+	    	Query query = em.createNativeQuery("SELECT Y.ID, Y.URL, Y.DNAME, Y.GLOBALRATING, Y.SERVICEDESC, Y.IOTDEV, DEVICESOWNED FROM IoTDevice as Y JOIN ACCESS_IOTDEV_USER as I  ON(y.ID = I.IOTDEVICE_FK) "
+					+ "WHERE I.USER_FK="+uid, IoTDevice.class);
+			List <IoTDevice> devices = new ArrayList<IoTDevice>(query.getResultList());
+			return devices;
+	    }
 	    
 }

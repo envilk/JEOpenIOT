@@ -25,18 +25,13 @@
 	<br />
 	<br />
 
-	<div class="sett_div">
-		<h:form>
-			<h:commandLink class="logout_but"
-				action="#{sessionController.logout()}" value="Logout"></h:commandLink>
-		</h:form>
-		<h:form>
-			<h:commandButton value="Delete Account"
-				action="#{userController.removeUser}" />
-		</h:form>
-	</div>
-
 	<h:panelGroup rendered="#{not empty sessionController.username}">
+		<div class="sett_div">
+			<h:form>
+				<h:commandLink class="logout_but"
+					action="#{sessionController.logout()}" value="Logout"></h:commandLink>
+			</h:form>
+		</div>
 		<div class="us_prof_div_sp">
 			<h:form>
 				<div class="sett_div">

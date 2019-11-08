@@ -10,6 +10,7 @@
 	<title>User Profile</title>
 
 </h:head>
+
 <h:body onload="#{sessionController.redirectLoginUserProfile()}">
 	<h2 class="">OPENIoT</h2>
 
@@ -54,7 +55,8 @@
 	</div>
 
 	<h:form>
-		<h:commandLink class="logout_but" action="#{sessionController.logout()}" value="Logout"></h:commandLink>
+		<h:commandLink class="logout_but"
+			action="#{sessionController.logout()}" value="Logout"></h:commandLink>
 	</h:form>
 
 	<div class="devices_Owned">
@@ -73,10 +75,36 @@
 					<p class="description_dev">
 						<h:outputText value="#{iot.serviceDesc}" />
 					</p>
+					<h:form>
+						<h:commandLink class="logout_but"
+							action="#{iotdeviceController.seeDevice(iot.id)}" value="See device"></h:commandLink>
+					</h:form>
 				</div>
 			</div>
 		</ui:repeat>
-
+		<br /> <br />
+		<h2 class="h2_atomar_left">Devices With Acces Allowed:</h2>
+		<br /> <br />
+		<ui:repeat
+			value="#{iotdeviceController.getIotdevicesAccessAllowedOfAUser()}"
+			var="iot_acc">
+			<div class="device_div">
+				<div class="device_name">
+					<img class="cloud_device_img" src="img/cloud-computing.svg"
+						alt="device_photo" />
+					<h3>
+						<h:outputText value="#{iot_acc.dName}" />
+					</h3>
+					<p class="description_dev">
+						<h:outputText value="#{iot_acc.serviceDesc}" />
+					</p>
+					<h:form>
+						<h:commandLink class="logout_but"
+							action="#{iotdeviceController.seeDevice(iot_acc.id)}" value="See device"></h:commandLink>
+					</h:form>
+				</div>
+			</div>
+		</ui:repeat>
 	</div>
 
 
